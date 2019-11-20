@@ -23,7 +23,7 @@ public class Main {
 		orchestrator.start();
 		
 		try {
-			int code = System.in.read();
+			System.in.read();
 			Runtime.getRuntime().exit(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

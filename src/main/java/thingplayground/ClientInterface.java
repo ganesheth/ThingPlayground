@@ -10,7 +10,7 @@ public class ClientInterface extends AbstractComponent{
 
 	@Override
 	public void start(OrchestratorCallback callback) {
-		port(8088);
+		port(Configuration.HTTP_PORT);
 		get("/things", (req, res) -> objectMapper.writeValueAsString(callback.handleRequest(this, req)));
 		System.out.println("Client interface is listening");
 	}

@@ -10,10 +10,8 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import thingplayground.models.AbstractEntity;
 import thingplayground.models.ApplicationPDU;
 
 
@@ -27,7 +25,7 @@ public class DeviceInterface extends AbstractComponent implements MqttCallback {
 	public void start(OrchestratorCallback callback) throws MqttException {
 		this.callback = callback;
 		String publisherId = UUID.randomUUID().toString();
-		client = new MqttClient("tcp://127.0.0.1:5566",publisherId);
+		client = new MqttClient(Configuration.MQTT_BROKER, publisherId);
 		client.connect();
 		client.setCallback(this);
 		client.subscribe("device/+" );
